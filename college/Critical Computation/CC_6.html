@@ -1,0 +1,113 @@
+<!DOCTYPE >
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../../style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a href="../../index.html"><h1 class="logo">Minjung Cho</h1></a>
+        </div>
+        <ul class="menu">
+          <li>
+            <a href="../../about.html">about</a>
+          </li>
+          <li>
+            <a>work</a>
+            <ul class="submenu">
+              <li>
+                <a href="../../highschool/highschool.html">highschool</a>
+                <!-- <ul class="submenu2">
+                  <li><a href="#">AP </a></li>
+                  <li><a href="#">Emotion</a></li>
+                </ul> -->
+              </li>
+              <li>
+                <a href="../../college/college.html">college</a>
+                <ul class="submenu2">
+                  <li><a href="../../college/Year 1.html">Year 1 </a></li>
+                  <li><a href="../../college/Year 2.html">Year 2 </a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a>contact</a>
+            <ul class="submenu">
+              <li>
+                <a href="https://www.instagram.com/yeobaek_blank/">Instagram</a>
+              </li>
+              <!-- <li><a href="#">Etc</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="about">
+      <button class="button_2">
+        <a href="critical computation.html"
+          ><i class="fa-solid fa-arrow-left"></i
+        ></a>
+      </button>
+      <h1>Pj 6. Data Profile</h1>
+      <script src="../../CC6/sketch.js"></script>
+
+      <h2>REFLECTION</h2>
+      <p>
+        For this project, I created a data portrait of the music playlist I
+        listened to for a week because I am a person who always have to be
+        listening to something whenever I focus. I recorded what I listen to
+        every time I played a music and categorized them into 6 big sections. My
+        original plan was to make a one big circular sine wave divided into 6,
+        however, I could not figure out how to make it. Therefore I had to
+        change the plan. I created six different sine waves and partially
+        covered them with arc. Each sine waves represent each category of the
+        music genre, and they are cut by the percentage I listen to. As I wrote
+        on the bottom left, the sine waves are divided into two big categories
+        of lyrics and no lyrics by red and blue colors.
+      </p>
+      <p>
+        I also added mouseIsPressed statement so that the text for the
+        categories are not shown at first but appears when the mouse is pressed.
+      </p>
+      <p>
+        I was able to enjoy the process of this project because it was my first
+        time actually trying to calculate which music I listen most to. Even
+        though my original plan did not work, I was able to understand better
+        about sine wave in the process of trying to fix the problem.
+      </p>
+      <p>[List]</p>
+      <p>Lyrics</p>
+      <ul>
+        <li>- Musical 604min // 139°</li>
+        <li>- Vocaloid 68.5min // 16°</li>
+        <li>- Pop 220min // 51°</li>
+      </ul>
+      <p>No Lyrics</p>
+      <ul>
+        <li>- Apocalypse 466min // 107°</li>
+        <li>- Music Box 172min // 40°</li>
+        <li>- Etc 30.5min // 7°</li>
+      </ul>
+    </main>
+  </body>
+</html>

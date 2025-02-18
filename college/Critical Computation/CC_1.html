@@ -1,0 +1,118 @@
+<!DOCTYPE >
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../../style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a href="../../index.html"><h1 class="logo">Minjung Cho</h1></a>
+        </div>
+        <ul class="menu">
+          <li>
+            <a href="../../about.html">about</a>
+          </li>
+          <li>
+            <a>work</a>
+            <ul class="submenu">
+              <li>
+                <a href="../../highschool/highschool.html">highschool</a>
+                <!-- <ul class="submenu2">
+                  <li><a href="#">AP </a></li>
+                  <li><a href="#">Emotion</a></li>
+                </ul> -->
+              </li>
+              <li>
+                <a href="../../college/college.html">college</a>
+                <ul class="submenu2">
+                  <li><a href="../../college/Year 1.html">Year 1 </a></li>
+                  <li><a href="../../college/Year 2.html">Year 2 </a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a>contact</a>
+            <ul class="submenu">
+              <li>
+                <a href="https://www.instagram.com/yeobaek_blank/">Instagram</a>
+              </li>
+              <!-- <li><a href="#">Etc</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="about">
+      <button class="button_2">
+        <a href="critical computation.html"
+          ><i class="fa-solid fa-arrow-left"></i
+        ></a>
+      </button>
+      <h1>Pj 1. Lost & Found</h1>
+      <section id="cc1">
+        <script src="../../CC1/sketch.js"></script>
+      </section>
+
+      <h2>REFLECTION</h2>
+      <p>
+        My partner described her object 'It’s a blue fabric tea bag that hangs
+        from a pink thread. Its materiality is soft yet rough to the touch. It
+        was thin but squishy and had little density. Its blue fabric glistened
+        yellow and silver in the light. Atop the front surface was a small frog,
+        who’s gaze seemed comforting and learned. Although once pristine, his
+        light green and blue had only slightly faded into the gray of use.
+      </p>
+      <p>
+        My interpretation was 'a lightblue triangle with few pink strokes on the
+        top The base color is lightblue with some yellow and silver colors mixed
+        In the middle of the triangle, there is a frog with a comforting face.
+        Its color is lightgreen with blue and grey mixed.'
+      </p>
+      <p>
+        At first, I started with filling the background. I wanted to give a
+        sunlight effect, I gave a slight gradient of brown. Then I drew the main
+        lightblue triangle. I wanted to use triangle(), but realized that I can
+        not change the angle of the corner for triangle. Since I wanted the tea
+        bag to have soft texture, I decided to use curve() instead. I had to
+        overlap two triangles to create the shadow. On the tea bag, I gave
+        texture and additional colors of the tea bag using ellipse and strokes
+        with overlay.
+      </p>
+      <p>
+        For the thread tied on the bag, I also used curve() to give gentle
+        curves to the threads. The frog printed on the middle of the bag is made
+        of ellipse() with translate() and rotate() to make the face. I used
+        arc() for the eyes and curve() for the mouth in order to express the
+        comforting emotion. Then I gave fading effect using some ellipse() of
+        blue and lightgreen on the frog.
+      </p>
+      <p>
+        I also wanted to make an animation of the tea bag swinging, but because
+        I couldn't group the objects in p5js, I had to give up that part.
+        Instead, I gave animation to the sunlight. I first created the light by
+        drawing a big triangle with blendMode(Screen). Then I added an animation
+        of changing the alpha channel percentage between 79 and 150.
+      </p>
+    </main>
+  </body>
+</html>

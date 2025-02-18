@@ -1,0 +1,105 @@
+<!DOCTYPE >
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <!-- <link href="../../CC5/optical_illusion.jpg" /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a href="../../index.html"><h1 class="logo">Minjung Cho</h1></a>
+        </div>
+        <ul class="menu">
+          <li>
+            <a href="../../about.html">about</a>
+          </li>
+          <li>
+            <a>work</a>
+            <ul class="submenu">
+              <li>
+                <a href="../../highschool/highschool.html">highschool</a>
+                <!-- <ul class="submenu2">
+                  <li><a href="#">AP </a></li>
+                  <li><a href="#">Emotion</a></li>
+                </ul> -->
+              </li>
+              <li>
+                <a href="../../college/college.html">college</a>
+                <ul class="submenu2">
+                  <li><a href="../../college/Year 1.html">Year 1 </a></li>
+                  <li><a href="../../college/Year 2.html">Year 2 </a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a>contact</a>
+            <ul class="submenu">
+              <li>
+                <a href="https://www.instagram.com/yeobaek_blank/">Instagram</a>
+              </li>
+              <!-- <li><a href="#">Etc</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="about">
+      <button class="button_2">
+        <a href="critical computation.html"
+          ><i class="fa-solid fa-arrow-left"></i
+        ></a>
+      </button>
+      <h1>Pj 5. Optical Illusion</h1>
+      <script src="../../CC5/sketch.js"></script>
+      <div>
+        <iframe
+          style="width: 600px; height: 650px"
+          src="https://editor.p5js.org/katelyn5897/full/LMv5NSL4D"
+          height="500px"
+        ></iframe>
+      </div>
+
+      <h2>REFLECTION</h2>
+      <p>
+        For this project, I tried to create an moire pattern animation. I made
+        the base pattern on illustrator and tried to use svg to p5.js converter
+        to put it in my file and adjust color. However, the conversion did not
+        work well because the object I made in Illustrator was too big.
+        Therefore, unfortunately, I had to insert the image as jpeg file.
+      </p>
+      <p>
+        Then I created the stripe pattern using moduler(%). Since I had three
+        frames of animation, I made every third stripe to be transparent. After
+        that, I created bouncing animation of the stripe pattern to move back
+        and forth. I also wanted to adjust the speed by pressing the mouse,
+        however, it did not work how I intended. It was not bouncing. So I had
+        to remove it.
+      </p>
+      <p>
+        I feel like in real life, this could become a nice secret code since the
+        pattern has to be well measured and it is hard to be recognized when the
+        animation is complex.
+      </p>
+    </main>
+  </body>
+</html>
