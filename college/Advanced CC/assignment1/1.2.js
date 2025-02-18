@@ -23,6 +23,10 @@ function setup() {
     let b = 0;
     let C = 0.5;
 
+    //i was messing around with this, and I think I somehow made a gradient but it did not look the same.
+    //then I found out that we had to use map function, which changed everything!!
+    //now the gradient is much smooth :)
+
     // if (pointArray[i].x < 400) {
     //   C = C + 1;
     //   //   pointArray[i].x = pointArray[i].x + 1;
