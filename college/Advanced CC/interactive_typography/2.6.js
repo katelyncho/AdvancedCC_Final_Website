@@ -58,8 +58,10 @@ class CustomPoint {
     if (this.on) {
       if (mouseIsPressed) {
         this.r = 0;
+        square(this.x, this.y, this.size);
       } else {
         this.r = random(0, 255);
+        circle(this.x, this.y, this.size);
       }
       fill(this.r, this.g, this.b);
       circle(this.x, this.y, this.size);

@@ -23,6 +23,7 @@ function draw() {
     let s = 5;
     let r = 255;
     let g = 0;
+
     let b = 0;
 
     let Y = 10 * sin(frameCount * 0.05 + pointArray[i].x * 0.05);

@@ -1,37 +1,51 @@
 let MyriadPro;
 let sample = 0.2;
+let textEffect;
 
 function preload() {
   MyriadPro = loadFont("../../../images/MyriadPro.otf");
 }
 
+//display text 'nope'
 function setup() {
   createCanvas(600, 600).parent("2.2");
-  fill(180);
-  noStroke();
+  pointArray = new pointArray("nope", 130, 320, 150, sample);
 }
 
 function draw() {
   background(0);
+  pointArray.display();
+}
 
-  let pointArray = MyriadPro.textToPoints("nope", 130, 320, 150, {
-    sampleFactor: sample,
-  });
+class pointArray {
+  constructor(text, x, y, size, sampleFactor) {
+    this.text = text;
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.sampleFactor = sampleFactor;
+    this.points = MyriadPro.textToPoints(this.text, this.x, this.y, this.size, {
+      sampleFactor: this.sampleFactor,
+    });
+  }
 
-  for (let i = 0; i < pointArray.length; i++) {
-    let r = 255;
-    let g = 0;
-    let b = 0;
-    let s = 6;
-    let d = dist(mouseX, mouseY, pointArray[i].x, pointArray[i].y);
+  display() {
+    fill(255, 0, 0);
+    noStroke();
 
-    if (d < 50) {
+    // points move away from the mouse
+    for (let i = 0; i < this.points.length; i++) {
+      let d = dist(mouseX, mouseY, this.points[i].x, this.points[i].y);
+      let x = this.points[i].x;
+      let y = this.points[i].y;
+      //points moves to the boundary(?)
+      if (d < 80) {
+        let angle = (y - mouseY, x - mouseX);
+        x = mouseX + cos(angle) * 80;
+        y = mouseY + sin(angle) * 80;
+      }
+
+      circle(x, y, 6);
     }
-
-    let X = mouseX;
-    let Y = mouseY;
-
-    fill(r, g, b);
-    circle(pointArray[i].x - X, pointArray[i].y - Y, s);
   }
 }
