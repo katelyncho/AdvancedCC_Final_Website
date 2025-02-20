@@ -65,6 +65,8 @@ class CustomPoint {
     } else {
       return;
     }
+    //if(d>=50) return; << same thing, more clean
+    //if() logic() << one line: no need {} this thing
 
     circle(this.x, this.y, this.s);
 
