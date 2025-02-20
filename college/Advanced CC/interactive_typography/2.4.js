@@ -1,10 +1,8 @@
 let grotesk;
 let sample = 0.1;
-let x, y;
-let firstLetter = [];
-let secondLetter = [];
 let speed = 0.2;
 let play = false;
+let textMorph;
 
 function preload() {
   grotesk = loadFont("../../../images/grotesk.otf");
@@ -15,40 +13,46 @@ function setup() {
   noFill();
   strokeWeight(1);
 
-  x = 130;
-  y = 320;
-
-  firstLetter = grotesk.textToPoints("??????", x, y, 100, {
-    sampleFactor: sample,
-  });
-  secondLetter = grotesk.textToPoints("Change", x, y, 100, {
-    sampleFactor: 0.0855,
-  });
-
-  print(firstLetter.length, secondLetter.length);
+  // text change from '??????' to 'change'
+  textMorph = new TextMorph("??????", "Change", 130, 320, 100, 0.0855);
 }
 
 function draw() {
   background(200);
-  beginShape();
-  for (let i = 0; i < firstLetter.length; i++) {
-    vertex(firstLetter[i].x, firstLetter[i].y);
+  textMorph.morph();
+  textMorph.display();
+}
 
-    if (firstLetter[i].x <= secondLetter[i].x) {
-      firstLetter[i].x += speed;
-    }
+class TextMorph {
+  //setting first and second letter values
+  constructor(startText, endText, x, y, size, sampleFactor) {
+    this.x = x;
+    this.y = y;
+    this.firstLetter = grotesk.textToPoints(startText, x, y, size, {
+      sampleFactor: sample,
+    });
+    this.secondLetter = grotesk.textToPoints(endText, x, y, size, {
+      sampleFactor: sampleFactor,
+    });
+  }
 
-    if (firstLetter[i].x >= secondLetter[i].x) {
-      firstLetter[i].x -= speed;
-    }
-
-    if (firstLetter[i].y <= secondLetter[i].y) {
-      firstLetter[i].y += speed;
-    }
-
-    if (firstLetter[i].y >= secondLetter[i].y) {
-      firstLetter[i].y -= speed;
+  //actual morphing part
+  morph() {
+    for (let i = 0; i < this.firstLetter.length; i++) {
+      if (i < this.secondLetter.length) {
+        this.firstLetter[i].x +=
+          Math.sign(this.secondLetter[i].x - this.firstLetter[i].x) * speed;
+        this.firstLetter[i].y +=
+          Math.sign(this.secondLetter[i].y - this.firstLetter[i].y) * speed;
+      }
     }
   }
-  endShape(CLOSE);
+
+  display() {
+    beginShape();
+    for (let i = 0; i < this.firstLetter.length; i++) {
+      vertex(this.firstLetter[i].x, this.firstLetter[i].y);
+    }
+    endShape(CLOSE);
+  }
 }
