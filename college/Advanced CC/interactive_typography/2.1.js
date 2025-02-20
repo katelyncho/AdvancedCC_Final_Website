@@ -43,7 +43,7 @@ class Point {
   update(mouseX, mouseY) {
     let d = dist(mouseX, mouseY, this.X, this.Y);
 
-    if (d < 70) {
+    if (d < 50) {
       let spread = map(d, 0, 600, 600, 0);
       this.x = this.X + (this.X - mouseX) * (spread / 100);
       this.y = this.Y + (this.Y - mouseY) * (spread / 100);
