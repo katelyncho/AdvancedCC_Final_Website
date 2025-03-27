@@ -450,6 +450,9 @@
 // }
 
 //---------The actual working one LETS GOOO--------------------
+// 'if this was an artwork'_maybe change what's showing on canvas/video
+//or even the page itself :3
+let streamReady = false;
 let handPose;
 let video;
 let hands = [];
@@ -470,9 +473,12 @@ function preload() {
 function setup() {
   createCanvas(640, 480);
   video = createCapture(VIDEO, { flipped: true });
+
   video.size(640, 480);
   video.hide();
   handPose.detectStart(video, gotHands);
+
+  noStroke();
 
   pg = createGraphics(width, height);
   pg.strokeWeight(5);
@@ -480,6 +486,10 @@ function setup() {
 
 function draw() {
   image(video, 0, 0, width, height);
+
+  video.loadPixels();
+  drawPoints(video.width, video.height, 10);
+
   image(pg, 0, 0);
 
   if (hands.length > 0) {
@@ -491,6 +501,8 @@ function draw() {
           let newX = width - indexFinger.x;
           let newY = indexFinger.y;
 
+          // pg.stroke(r, g, b, alpha);
+          // pg.line(newX, newY, previousX, previousY);
           if (previousX !== undefined && previousY !== undefined) {
             pg.stroke(r, g, b, alpha);
             pg.line(newX, newY, previousX, previousY);
@@ -554,6 +566,28 @@ function draw() {
           }
         }
       }
+    }
+  }
+}
+
+function getColorFromPixelArray(pixelArray, x, y, w) {
+  const index = (x + y * w) * 4;
+  const r = pixelArray[index];
+  const g = pixelArray[index + 1];
+  const b = pixelArray[index + 2];
+  const a = pixelArray[index + 3];
+
+  return color(r, g, b, a);
+}
+
+function drawPoints(w, h, stepSize) {
+  for (let x = 0; x < w; x += stepSize) {
+    for (let y = 0; y < h; y += stepSize) {
+      let col = getColorFromPixelArray(video.pixels, x, y, video.width);
+
+      fill(col);
+
+      circle(x, y, stepSize);
     }
   }
 }
