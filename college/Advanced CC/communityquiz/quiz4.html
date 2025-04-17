@@ -20,19 +20,27 @@
     <header>
       <nav>
         <div>
-          <h1 class="logo">Minjung Cho</h1>
+          <a href="../../../index.html"><h1 class="logo">Minjung Cho</h1></a>
         </div>
         <ul class="menu">
-          <li>about</li>
+          <li>
+            <a href="../../../about.html">about</a>
+          </li>
           <li>
             <a>work</a>
             <ul class="submenu">
-              <li>highschool</li>
               <li>
-                college
+                <a href="../../../highschool/highschool.html">highschool</a>
+                <!-- <ul class="submenu2">
+                      <li><a href="#">AP </a></li>
+                      <li><a href="#">Emotion</a></li>
+                      </ul> -->
+              </li>
+              <li>
+                <a href="../../../college/college.html">college</a>
                 <ul class="submenu2">
-                  <li>Year 1</li>
-                  <li>Year 2</li>
+                  <li><a href="../../../college/Year 1.html">Year 1 </a></li>
+                  <li><a href="../../../college/Year 2.html">Year 2 </a></li>
                 </ul>
               </li>
             </ul>
@@ -40,7 +48,9 @@
           <li>
             <a>contact</a>
             <ul class="submenu">
-              <li>Instagram</li>
+              <li>
+                <a href="https://www.instagram.com/yeobaek_blank/">Instagram</a>
+              </li>
               <!-- <li><a href="#">Etc</a></li> -->
             </ul>
           </li>
@@ -48,12 +58,11 @@
       </nav>
     </header>
     <button>
-      <i class="fa-solid fa-arrow-left"></i>
+      <a href="communityquiz.html"><i class="fa-solid fa-arrow-left"></i></a>
     </button>
     <div class="space">
       <form id="quiz-form">
         <div id="questions-container">
-          <!-- Assigned scores for each questions -->
           <div class="question">
             <h4>1. Are you human?</h4>
             <label
@@ -246,13 +255,10 @@
 
       <div id="result" style="display: none">
         <h2>Your score is: <span id="score"></span></h2>
-        <button>
-          <h1>
-            <a href="quiz2.html">Retake Quiz! You can do better this time.</a>
-          </h1>
-        </button>
+        <h2>Good Job!</h2>
+        <!-- <button><a href="quiz2.html">Retake Quiz</a></button> -->
       </div>
     </div>
-    <script src="quiz1.js"></script>
+    <script src="quiz4.js"></script>
   </body>
 </html>
