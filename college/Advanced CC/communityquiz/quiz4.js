@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
     'input[value="5"], input[value="7.5"], input[value="10"]'
   );
 
+  //when radios with higher scores are clicked, it disappears
   highValueRadios.forEach((radio) => {
     radio.addEventListener("click", () => {
       const label = radio.closest("label");
@@ -12,11 +13,11 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Optional: handle form submission
   const form = document.getElementById("quiz-form");
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    //calculate score
     let total = 0;
     for (let i = 1; i <= 10; i++) {
       const selected = document.querySelector(`input[name="q${i}"]:checked`);
@@ -25,6 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    //show the total score
     localStorage.setItem("quizScore", total);
     document.getElementById("score").textContent = total;
     form.style.display = "none";

@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   const prevScore = parseFloat(localStorage.getItem("quizScore")) || 0;
 
-  // Add alert on high-score choices
+  // detect higher scores
   if (prevScore >= 50) {
     const radios = document.querySelectorAll("input[type='radio']");
     radios.forEach((radio) => {
@@ -13,10 +13,10 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Handle form submission
+  // calculate score
   const form = document.getElementById("quiz-form");
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent URL redirect
+    e.preventDefault();
 
     let total = 0;
     for (let i = 1; i <= 10; i++) {
@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (selected) total += parseFloat(selected.value);
     }
 
+    //show the total score
     localStorage.setItem("quizScore", total);
     document.getElementById("score").textContent = total;
     form.style.display = "none";
