@@ -16,4 +16,11 @@ document
     document.getElementById("score").textContent = total;
     document.getElementById("quiz-form").style.display = "none";
     document.getElementById("result").style.display = "block";
+
+    // const retakeButton = document.querySelector("#result button");
+    // if (total < 50) {
+    //   retakeButton.onclick = () => href = "quiz4.html"; // Reload same page
+    // } else {
+    //   retakeButton.onclick = () => (window.location.href = "quiz2.html"); // Go to quiz2
+    // }
   });
