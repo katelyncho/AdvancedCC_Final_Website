@@ -1,40 +1,178 @@
-const ghibliData =
-  "https://ghibliapi.vercel.app/films/58611129-2dbc-4a81-a72f-77ddfc1b1b49";
-// "https://ghibliapi.vercel.app/locations/"
-// "https://ghibliapi.vercel.app/people/986faac6-67e3-4fb8-a9ee-bad077c2e7fe";
-// "https://ghibliapi.vercel.app/species/af3910a6-429f-4c74-9ad5-dfe1c4aa04f2";
+// const ghibliLocations = "https://ghibliapi.vercel.app/locations";
+// const ghibliSpecies = "https://ghibliapi.vercel.app/species";
+// const ghibliVehicles = "https://ghibliapi.vercel.app/vehicles";
 
-fetch(ghibliData)
-  .then((response) => response.json())
-  .then(handleGhibliListFetch)
-  .catch((error) => console.log(error));
-// console.log(data);
-// document.querySelector(".title").textContent = data.title;
-// document.querySelector(".description").textContent = data.description;
+// fetch(ghibliLocations)
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log(data);
+//   });
 
-function handleGhibliListFetch(data) {
-  const ghibliList = Object.keys(data);
-  const randomGhibli =
-    ghibliList[Math.floor(Math.random() * ghibliList.length)];
+// fetch(ghibliSpecies)
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log(data);
+//   });
 
-  console.log(randomGhibli);
+// fetch(ghibliVehicles)
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log(data);
+//   });
 
-  fetch("https://ghibliapi.vercel.app/films/" + handleRandomGhibliFetch)
-    .then((response) => response.json())
-    .then(handleRandomGhibliFetch)
-    .catch((error) => console.log(error));
+// locations[]: climate, name, residents, surface_water, terrain
+// species[]: name, classification, gender, age, eye_colors, hair_colors
+// vehicles[]: vehicle_class,or none
+
+// ------------------
+
+const locationURL = "https://ghibliapi.vercel.app/locations";
+const speciesURL = "https://ghibliapi.vercel.app/species";
+const vehiclesURL = "https://ghibliapi.vercel.app/vehicles";
+
+const ghibliProfile = {
+  species: {},
+  location: {},
+  vehicle: {},
+};
+
+function loadRandomGhibliData() {
+  document.getElementById("output").textContent = ""; // Clear previous content
+
+  fetch(speciesURL)
+    .then((res) => res.json())
+    .then((data) => {
+      handleSpeciesFields(data);
+      return fetch(locationURL);
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      handleLocationFields(data);
+      return fetch(vehiclesURL);
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      handleVehicleFields(data);
+    })
+    .catch((err) => console.error("Error:", err));
 }
 
-function handleRandomGhibliFetch(data) {
-  // for (let i = 0; i < data.length; i++) {
-  //   const randomImage =
-  //     data.message[Math.floor(Math.random() * data.message.length)];
-  //   const image = document.createElement("img");
-  //   image.src = randomImage;
-  //   document.body.appendChild(image);
-  // }
+function handleSpeciesFields(data) {
+  const getRandomValue = (field) => {
+    const nonNull = data.map((sp) => sp[field]).filter((v) => v !== undefined);
+    return nonNull[Math.floor(Math.random() * nonNull.length)];
+  };
 
-  const image = document.createElement("img");
-  image.src = randomImage;
-  document.body.appendChild(image);
+  const pickOneFromCommaList = (value) => {
+    if (!value) return "Unknown";
+    const items = value
+      .split(",")
+      .map((v) => v.trim())
+      .filter((v) => v !== "");
+    return items[Math.floor(Math.random() * items.length)];
+  };
+
+  const name = getRandomValue("name");
+  const classification = getRandomValue("classification");
+  const gender = getRandomValue("gender");
+  const age = getRandomValue("age");
+  const eyeColor = pickOneFromCommaList(getRandomValue("eye_colors"));
+  const hairColor = pickOneFromCommaList(getRandomValue("hair_colors"));
+
+  ghibliProfile.species = {
+    name,
+    classification,
+    gender,
+    age,
+    eyeColor,
+    hairColor,
+  };
+
+  displayOutput("Species", {
+    Name: name,
+    Classification: classification,
+    Gender: gender,
+    Age: age,
+    "Eye Color": eyeColor,
+    "Hair Color": hairColor,
+  });
+}
+
+function handleLocationFields(data) {
+  const getRandomValue = (field) => {
+    const nonNull = data
+      .map((loc) => loc[field])
+      .filter((v) => v !== undefined);
+    return nonNull[Math.floor(Math.random() * nonNull.length)];
+  };
+
+  const name = getRandomValue("name");
+  const climate = getRandomValue("climate");
+  const residents = (getRandomValue("residents") || []).join(", ") || "None";
+  const surfaceWater = getRandomValue("surface_water");
+  const terrain = getRandomValue("terrain");
+
+  ghibliProfile.location = {
+    name,
+    climate,
+    residents,
+    surfaceWater,
+    terrain,
+  };
+
+  displayOutput("Location", {
+    Name: name,
+    Climate: climate,
+    Residents: residents,
+    "Surface Water": surfaceWater,
+    Terrain: terrain,
+  });
+}
+
+function handleVehicleFields(data) {
+  const getRandomValue = (field) => {
+    if (data.length === 0) return "none";
+    const nonNull = data.map((v) => v[field]).filter((v) => v !== undefined);
+    return nonNull.length > 0
+      ? nonNull[Math.floor(Math.random() * nonNull.length)]
+      : "none";
+  };
+
+  const vehicleClass = getRandomValue("vehicle_class");
+
+  ghibliProfile.vehicle = {
+    vehicleClass,
+  };
+
+  displayOutput("Vehicle", {
+    "Vehicle Class": vehicleClass,
+  });
+
+  // ✅ FINAL SUMMARY PARAGRAPH
+  const s = ghibliProfile.species;
+  const l = ghibliProfile.location;
+  const v = ghibliProfile.vehicle;
+
+  const summary = `
+
+  You are a ${s.age} years old ${s.gender.toLowerCase()} ${
+    s.name
+  } with ${s.eyeColor.toLowerCase()} eyes and ${s.hairColor.toLowerCase()} colored hair.
+  You live at ${l.name} in ${
+    l.terrain
+  }, which is ${l.climate.toLowerCase()} and is above ${
+    l.surfaceWater
+  } surface water.
+  You use ${v.vehicleClass.toLowerCase()} for transportation.`;
+
+  document.getElementById("output").textContent += summary;
+}
+
+function displayOutput(category, info) {
+  const output = document.getElementById("output");
+  let result = `\n${category}:\n`;
+  for (let key in info) {
+    result += `- ${key}: ${info[key]}\n`;
+  }
+  output.textContent += result;
 }
