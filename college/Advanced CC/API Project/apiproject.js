@@ -37,7 +37,7 @@ const ghibliProfile = {
 };
 
 function loadRandomGhibliData() {
-  document.getElementById("output").textContent = ""; // Clear previous content
+  document.getElementById("output").textContent = "";
 
   fetch(speciesURL)
     .then((res) => res.json())
@@ -148,7 +148,6 @@ function handleVehicleFields(data) {
     "Vehicle Class": vehicleClass,
   });
 
-  // ✅ FINAL SUMMARY PARAGRAPH
   const s = ghibliProfile.species;
   const l = ghibliProfile.location;
   const v = ghibliProfile.vehicle;
