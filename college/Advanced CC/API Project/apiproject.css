@@ -1,3 +1,19 @@
+.apiBackground {
+  background-color: rgb(241, 230, 204);
+}
+
+.apiTitle {
+  color: #75993a;
+  text-align: left;
+  margin: 0px 20px;
+}
+
+.apiSubTitle {
+  color: rgb(12, 80, 122);
+  text-align: left;
+  margin: 0px 20px;
+}
+
 .apiButton {
   width: 200px;
   height: 50px;
@@ -19,8 +35,9 @@
 
 .ghibliResult {
   max-width: 90%;
-  background-color: rgb(233, 157, 86);
+  background-color: rgb(246, 205, 130);
   text-align: center;
+  border-radius: 10px;
   display: block;
   font-size: 16px;
   padding: 10px;
