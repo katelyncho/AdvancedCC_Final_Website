@@ -1,0 +1,30 @@
+.apiButton {
+  width: 200px;
+  height: 50px;
+  background-color: #b7c974;
+  margin: 20px;
+  color: rgb(255, 242, 208);
+  padding: 10px 10px;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: flex;
+  cursor: pointer;
+}
+
+.apiButton:hover {
+  background-color: #90c5e1;
+  color: rgb(255, 242, 208);
+}
+
+.ghibliResult {
+  max-width: 90%;
+  background-color: rgb(233, 157, 86);
+  text-align: center;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  margin: 0 auto;
+}

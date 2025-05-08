@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <link rel="stylesheet" href="../../../style.css" />
+    <link rel="stylesheet" href="apiproject.css" />
 
     <link
       rel="stylesheet"
@@ -65,8 +66,13 @@
       Make Your Own Ghibli Character! Without Ghibli AI filter :D
     </div>
     <!-- <h4 class="space" id="title"></h4> -->
-    <button onclick="loadRandomGhibliData()">Generate Character</button>
-    <pre id="output"></pre>
+    <!-- <button class="apiButton" onclick="loadRandomGhibliData()">
+      Generate Character
+    </button> -->
+    <div class="apiButton" onclick="loadRandomGhibliData()">
+      Generate Character
+    </div>
+    <pre class="ghibliResult" id="output"></pre>
 
     <script src="apiproject.js"></script>
   </body>

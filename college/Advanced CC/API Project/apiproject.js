@@ -40,17 +40,17 @@ function loadRandomGhibliData() {
   document.getElementById("output").textContent = "";
 
   fetch(speciesURL)
-    .then((res) => res.json())
+    .then((response) => response.json())
     .then((data) => {
       handleSpeciesFields(data);
       return fetch(locationURL);
     })
-    .then((res) => res.json())
+    .then((response) => response.json())
     .then((data) => {
       handleLocationFields(data);
       return fetch(vehiclesURL);
     })
-    .then((res) => res.json())
+    .then((response) => response.json())
     .then((data) => {
       handleVehicleFields(data);
     })
@@ -63,7 +63,7 @@ function handleSpeciesFields(data) {
     return nonNull[Math.floor(Math.random() * nonNull.length)];
   };
 
-  const pickOneFromCommaList = (value) => {
+  const randomCommaList = (value) => {
     if (!value) return "Unknown";
     const items = value
       .split(",")
@@ -76,8 +76,8 @@ function handleSpeciesFields(data) {
   const classification = getRandomValue("classification");
   const gender = getRandomValue("gender");
   const age = getRandomValue("age");
-  const eyeColor = pickOneFromCommaList(getRandomValue("eye_colors"));
-  const hairColor = pickOneFromCommaList(getRandomValue("hair_colors"));
+  const eyeColor = randomCommaList(getRandomValue("eye_colors"));
+  const hairColor = randomCommaList(getRandomValue("hair_colors"));
 
   ghibliProfile.species = {
     name,
@@ -123,7 +123,6 @@ function handleLocationFields(data) {
   displayOutput("Location", {
     Name: name,
     Climate: climate,
-    Residents: residents,
     "Surface Water": surfaceWater,
     Terrain: terrain,
   });
@@ -152,17 +151,36 @@ function handleVehicleFields(data) {
   const l = ghibliProfile.location;
   const v = ghibliProfile.vehicle;
 
-  const summary = `
+  // const summary = `You are a ${s.age} years old ${s.gender.toLowerCase()} ${
+  //   s.name
+  // } with ${s.eyeColor.toLowerCase()} eyes and ${s.hairColor.toLowerCase()} colored hair. You live at ${
+  //   l.name
+  // } in ${l.terrain}, which is ${l.climate.toLowerCase()} and is above ${
+  //   l.surfaceWater
+  // } surface water.You use ${v.vehicleClass.toLowerCase()} for transportation.`;
 
-  You are a ${s.age} years old ${s.gender.toLowerCase()} ${
-    s.name
-  } with ${s.eyeColor.toLowerCase()} eyes and ${s.hairColor.toLowerCase()} colored hair.
-  You live at ${l.name} in ${
-    l.terrain
-  }, which is ${l.climate.toLowerCase()} and is above ${
-    l.surfaceWater
-  } surface water.
-  You use ${v.vehicleClass.toLowerCase()} for transportation.`;
+  const summary =
+    "You are a " +
+    s.age +
+    " years old, " +
+    s.gender +
+    " " +
+    s.name +
+    " with " +
+    s.eyeColor +
+    " eyes and " +
+    s.hairColor +
+    " hair. You live at " +
+    l.name +
+    " in " +
+    l.terrain +
+    ", which is " +
+    l.climate +
+    " and is above " +
+    l.surfaceWater +
+    " surface water. You use " +
+    v.vehicleClass +
+    " for transportation.";
 
   document.getElementById("output").textContent += summary;
 }
